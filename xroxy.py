@@ -32,7 +32,13 @@ class XRoxy(object):
             read = resp.read()
             #print read
             tree = etree.HTML(read)
-            table = tree.xpath('/html/body/div[1]/div[2]/table[1]') 
-            for tr in tree.xpath("//tr"):
-                t = tr.xpath("//td//font[text()='Brand']/following::td[1]")[0]
-                print tostring(t)
+            tds = tree.xpath('/html/body/div[1]/div[2]/table[1]/tr/td')
+            
+            for td in tds:
+                if td.text is not None and len(td.text) > 0:
+                    print td.text
+                
+                
+                
+                
+                
